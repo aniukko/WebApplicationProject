@@ -1,0 +1,23 @@
+{
+  "name": "harkkatyo-v8",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./start/www.js"
+  },
+  "dependencies": {
+    "cookie-parser": "1.4.5",
+    "dateformat": "3.0.3",
+    "debug": "4.2.0",
+    "express": "5.0.0-alpha.8",
+    "express-validator": "6.6.0",
+    "http-errors": "1.8.0",
+    "mongodb": "3.5.9",
+    "mongoose": "^5.9.24",
+    "morgan": "1.10.0",
+    "nodemon": "2.0.4",
+    "pug": "3.0.0"
+  },
+  "keywords": [],
+  "description": ""
+}

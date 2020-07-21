@@ -1,0 +1,40 @@
+body {
+  text-align: center;
+  background-color: white;
+  font-family: serif;
+}
+
+h1,
+h2 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+#logo {
+  font-family: Georgia;
+  font-size: 30px;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+#submitPost {
+  font-weight: bold;
+  text-align: left;
+}
+
+button,
+input {
+  font-family: serif;
+}
+
+.center {
+  height: 100px;
+  line-height: 100px;
+}
+
+.border {
+  border: 1px solid black;
+}

@@ -1,0 +1,63 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+
+    style
+      include ../stylesheets/style.css
+
+  body
+    .row.grey.lighten-2
+      .container
+        .col.s12.m2
+          .col.s5.m12
+          .col.s2.m12
+            h1#logo.light-green.darken-3.white-text MB
+          .col.s5.m12
+        .col.s12.m8
+          h2= title
+          h6= "User logged in: " + logUserMsg
+        .col.s12.m2
+          form.center(method="POST" action="/posts/logout")
+            button.btn.light-green.waves-effect(type='submit', name='logoutbtn') Log Out
+    .row
+      .container
+        .col.s12.m12.l12.xl4
+          h6.left-align Filter posts by username, by date or by both
+          form.left-align(method="POST" action="/posts/filter")
+            .col.s12.m6.l6.xl12
+              .form-group.input-field
+                input#filterName.form-control(type='text', name='filtername', maxlength='30')
+                label(for='filterName') Username
+            .col.s12.m6.l6.xl12
+              .form-group.input-field
+                input#filterDate.form-control(type='date', class='datepicker', data-date-format="dd.mm.yyyy", name='filterdate')
+                label(for='filterDate')
+            button.btn.light-green.waves-effect(type='submit', name='filterbtn') Filter or Reset
+        .col.s12.m12.l12.xl8
+          p.left-align= filterMessage
+          .col.s12.light-green.lighten-5.hoverable.border
+            .container
+              ul
+              each post in post_list.reverse()
+                li.left-align #{post.user}: #{post.content} - #{post.time}
+              else
+                p.left-align There are no posts.
+              ul
+        br
+    .row
+      .container
+        hr
+        h6#submitPost Submit a new post
+        p.left-align Posts can be 300 characters long
+        form(method='POST' action='/posts/create')
+          .form-group.input-field
+            textarea#content.form-control(type='text', class='materialize-textarea', data-length='300', maxlength='300', name='content')
+            label(for='content') Post content
+          button.btn.light-green.waves-effect(type='submit', name='postbtn') Submit a New Post
+        p.red-text= submitMessage

@@ -1,0 +1,68 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+
+    style
+      include ../stylesheets/style.css
+
+  body
+    .row.grey.lighten-2
+      .container
+        .col.s12.m2
+          .col.s5.m12
+          .col.s2.m12
+            h1#logo.light-green.darken-3.white-text MB
+          .col.s5.m12
+        .col.s12.m8
+          h1= title
+          h6 Welcome to #{title}!
+          br
+        .col.s0.m2
+    .row
+      .container
+        p See what others have posted and post content yourself after logging in.
+        .col.s12.m3.l3.xl4.light-green.lighten-5.hoverable.border
+          .col.s6.m12.l12.xl6
+            p.red-text= logMessage
+            h5 Log In
+              form(method='POST' action='/posts/login')
+                .form-group.input-field
+                  input#logname.form-control(type='text', maxlength='30', name='userlogin')
+                  label(for='logname') Username
+                .form-group.input-field
+                  input#logpw.form-control(type='password', maxlength='30', name='pwlogin')
+                  label(for='logpw') Password
+                button.btn.light-green.waves-effect(type='submit' name='loginbtn') Log In
+            br
+          .col.s6.m12.l12.xl6
+            p.red-text= signMessage1
+            p= signMessage2
+            h5 Sign Up
+              form(method='POST' action='/posts/signup')
+                .form-group.input-field
+                  input#signname.form-control(type='text', maxlength='30', name='usersignup')
+                  label(for='signname') New username
+                .form-group.input-field
+                  input#signpw.form-control(type='password', maxlength='30', name='pwsignup')
+                  label(for='signpw') New password
+                button.btn.light-green.waves-effect(type='submit', name='signupbtn') Sign Up
+            br
+        .col.s0.m1
+          .row
+            .col.s12.m0
+        .col.s12.m8.l8.xl7.light-green.lighten-5.hoverable.border
+          .container
+            ul
+            each post in post_list.reverse()
+              li.left-align #{post.user}: #{post.content} - #{post.time}
+            else
+              p.left-align No posts in the MicroBlog yet
+            ul
+
+    
