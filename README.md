@@ -1,2 +1,2 @@
 # WebApplicationProject
-Created with CodeSandbox
+url: http://microblog-webappsproject.rahtiapp.fi
