@@ -205,7 +205,7 @@ router.post(
 	}
 );
 
-//Filtering the posts
+//Filtering the posts.
 //The user can filter posts by the username, by the date created,
 //by both of them both or by no filter at all
 router.post(
